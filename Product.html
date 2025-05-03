@@ -332,7 +332,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="Home.html">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="images/logo-burungdc.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
       Eternal Bird Nest
     </a>
@@ -341,7 +341,7 @@
     </button>
     <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link active" href="Product.html">Product</a></li>
         <li class="nav-item"><a class="nav-link" href="Aboutus.html">About Us</a></li>
       </ul>
@@ -474,6 +474,17 @@
               </div>
             </div>
           </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="images/smolgrade.jpg" alt=" B Grade">
+              <div class="product-card-content">
+                <h3>B Grade</h3>
+                <p>Perfect for daily nourishment, Eternal Birdnest’s Smaller Grade offers the same natural goodness in a more economical form. Carefully selected for quality and purity, it’s an ideal choice for everyday wellness.</p>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- Swiper Pagination -->
         <div class="swiper-pagination"></div>
@@ -485,67 +496,92 @@
   </section>
   
   <!-- Product Gallery with Filters -->
-  <section class="product-gallery">
-    <div class="container">
-      <h2 data-aos="fade-up">Our Signature Products</h2>
-      <p data-aos="fade-up" data-aos-delay="100">Explore the unique benefits of each Eternal Bird Nest creation.</p>
-      <!-- Filter Buttons -->
-      <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
-        <button class="filter-button active" data-filter="*">All</button>
-        <button class="filter-button" data-filter=".premium">Premium</button>
-        <button class="filter-button" data-filter=".gold">Gold Label</button>
-        <button class="filter-button" data-filter=".royal">Royal</button>
-        <button class="filter-button" data-filter=".herbal">Herbal</button>
+<section class="product-gallery">
+  <div class="container">
+    <h2 data-aos="fade-up">Our Signature Products</h2>
+    <p data-aos="fade-up" data-aos-delay="100">
+      Explore the unique benefits of each Eternal Bird Nest creation.
+    </p>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
+      <button class="filter-button active" data-filter="*">All</button>
+      <button class="filter-button" data-filter=".premium">Premium</button>
+      <button class="filter-button" data-filter=".gold">Gold Label</button>
+      <button class="filter-button" data-filter=".royal">Royal</button>
+      <button class="filter-button" data-filter=".herbal">Herbal</button>
+      <button class="filter-button" data-filter=".Economical">Economical</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid" id="product-grid">
+      <!-- Item 1 -->
+      <div class="grid-item premium" data-aos="fade-up" data-aos-delay="0">
+        <img src="images/pantat walet.jpg" alt="Premium Bird Nest">
+        <h4>Premium Bird Nest</h4>
+        <p>Our classic nest selection, rich in natural proteins and minerals.</p>
+        <ul class="benefits-list">
+          <li>Enhances skin complexion</li>
+          <li>Boosts energy levels</li>
+          <li>Supports immune system</li>
+        </ul>
       </div>
-      <!-- Product Grid -->
-      <div class="grid" id="product-grid">
-        <!-- Item 1 -->
-        <div class="grid-item premium" data-aos="fade-up">
-          <img src="images/pantat walet.jpg" alt="Premium Bird Nest">
-          <h4>Premium Bird Nest</h4>
-          <p>Our classic nest selection, rich in natural proteins and minerals.</p>
-          <ul class="benefits-list">
-            <li>Enhances skin complexion</li>
-            <li>Boosts energy levels</li>
-            <li>Supports immune system</li>
-          </ul>
-        </div>
-        <!-- Item 2 -->
-        <div class="grid-item gold" data-aos="fade-up" data-aos-delay="100">
-          <img src="images/Big cup.jpg" alt="Big Cup Grade AAA">
-          <h4>Big Cup Grade AAA</h4>
-          <p>Handpicked golden-grade nests for superior taste and purity.</p>
-          <ul class="benefits-list">
-            <li>Anti-aging properties</li>
-            <li>Strengthens respiratory health</li>
-            <li>Natural stress relief</li>
-          </ul>
-        </div>
-        <!-- Item 3 -->
-        <div class="grid-item royal" data-aos="fade-up" data-aos-delay="200">
-          <img src="images/med-cup.jpg" alt="Medium Cup Grade AAA">
-          <h4>Medium Cup Grade AAA</h4>
-          <p>Double-boiled to extract a potent essence from our finest nests.</p>
-          <ul class="benefits-list">
-            <li>High concentration of nutrients</li>
-            <li>Improves sleep quality</li>
-            <li>Enhances overall vitality</li>
-          </ul>
-        </div>
-        <!-- Item 4 -->
-        <div class="grid-item herbal" data-aos="fade-up" data-aos-delay="300">
-          <img src="images/small-cup.jpg" alt="Herbal Infused Nest">
-          <h4>Small Cup Grade AAA</h4>
-          <p>Blended with traditional herbs to amplify healing effects.</p>
-          <ul class="benefits-list">
-            <li>Soothes digestion</li>
-            <li>Balances hormones</li>
-            <li>Promotes relaxation</li>
-          </ul>
-        </div>
+
+      <!-- Item 2 -->
+      <div class="grid-item gold" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/Big cup.jpg" alt="Big Cup Grade AAA">
+        <h4>Big Cup Grade AAA</h4>
+        <p>Handpicked golden-grade nests for superior taste and purity.</p>
+        <ul class="benefits-list">
+          <li>Anti-aging properties</li>
+          <li>Strengthens respiratory health</li>
+          <li>Natural stress relief</li>
+        </ul>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="grid-item royal" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/med-cup.jpg" alt="Medium Cup Grade AAA">
+        <h4>Medium Cup Grade AAA</h4>
+        <p>Double-boiled to extract a potent essence from our finest nests.</p>
+        <ul class="benefits-list">
+          <li>High concentration of nutrients</li>
+          <li>Improves sleep quality</li>
+          <li>Enhances overall vitality</li>
+        </ul>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="grid-item herbal" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/small-cup.jpg" alt="Herbal Infused Nest">
+        <h4>Small Cup Grade AAA</h4>
+        <p>Blended with traditional herbs to amplify healing effects.</p>
+        <ul class="benefits-list">
+          <li>Soothes digestion</li>
+          <li>Balances hormones</li>
+          <li>Promotes relaxation</li>
+        </ul>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="grid-item Economical" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/smolgrade.jpg" alt="Economical Bird Nest">
+        <h4>B Grade</h4>
+        <p>
+          Perfect for daily nourishment, Eternal Birdnest’s Smaller Grade offers
+          the same natural goodness in a more economical form. Carefully selected
+          for quality and purity, it’s an ideal choice for everyday wellness.
+        </p>
+        <ul class="benefits-list">
+          <li>Soothes digestion</li>
+          <li>Balances hormones</li>
+          <li>Promotes relaxation</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
   
   <!-- Footer -->
   <footer class="text-center text-white py-4 mt-5">
@@ -555,7 +591,7 @@
             <div class="row text-center d-flex justify-content-center pt-5">
                 <div class="col-md-2">
                     <h6 class="text-uppercase font-weight-bold">
-                        <a href="#/" class="text-white title-hover footer-link">Home</a>
+                        <a href="index.html" class="text-white title-hover footer-link">Home</a>
                     </h6>
                 </div>
                 <div class="col-md-2">
