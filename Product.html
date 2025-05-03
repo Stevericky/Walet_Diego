@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products - 永远燕窝 (Eternal Bird Nest)</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons & FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Bree+Serif&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #05324d;
+      --secondary-color: #0a85b3;
+      --accent-color: #fbb702;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+    body {
+      font-family: "Roboto Condensed", sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: white;
+      margin-top: 70px; /* space for fixed nav */
+    }
+   /* Navigation - Updated to match Home.html */
+   .navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white !important;
+  }
+
+  .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+  }
+
+  .navbar-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 700;
+  }
+
+  /* Underline on hover - Updated to match Home.html */
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link.active::after {
+    width: 100%;
+  }
+    /* Hero Video Section */
+    .hero-video {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+    .hero-video-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .hero-video .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    .hero-video .hero-content {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      color: white;
+      text-align: center;
+      width: 80%; max-width: 800px;
+    }
+    .hero-video h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      letter-spacing: 1px;
+    }
+    .hero-video p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    .hero-video .btn-custom {
+      padding: 12px 30px;
+      background-color: var(--accent-color);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .hero-video .btn-custom:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    /* Parallax Story Section */
+    .parallax-story {
+      position: relative;
+      background-image: url('images/imeg2.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 0;
+    }
+    .parallax-story .overlay {
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .parallax-story .parallax-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .parallax-story h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    .parallax-story p {
+      font-size: 1.2rem;
+      color: #f0f0f0;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    /* Featured Products Slider */
+    .featured-products {
+      padding: 60px 0;
+      background-color: #fff;
+    }
+    .featured-products h2 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .featured-products p {
+      text-align: center;
+      color: var(--secondary-color);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    .swiper-container {
+      padding-bottom: 50px;
+    }
+    .swiper-slide {
+      text-align: center;
+    }
+    .product-card {
+      background-color: var(--light-color);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card-content {
+      padding: 20px;
+    }
+    .product-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+    .product-card p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    /* Product Gallery */
+    .product-gallery {
+      padding: 60px 0;
+      background-color: var(--light-color);
+    }
+    .product-gallery h2 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .product-gallery p {
+      text-align: center;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .filter-button {
+      padding: 10px 20px;
+      margin: 0 8px 10px;
+      background-color: var(--dark-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .filter-button.active,
+    .filter-button:hover {
+      background-color: var(--accent-color);
+      color: var(--dark-color);
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .grid-item {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      width: calc(25% - 15px);
+    }
+    @media (max-width: 992px) {
+      .grid-item { width: calc(50% - 15px); }
+    }
+    @media (max-width: 576px) {
+      .grid-item { width: 100%; }
+    }
+    .grid-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .grid-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .grid-item h4 {
+      color: var(--primary-color);
+      margin: 15px 0 5px;
+      font-size: 1.25rem;
+    }
+    .grid-item p {
+      color: #555;
+      font-size: 0.95rem;
+      margin: 0 15px 15px;
+      line-height: 1.4;
+    }
+    .benefits-list {
+      text-align: left;
+      list-style-type: disc;
+      margin: 10px 20px 20px;
+      color: #333;
+    }
+     /* Footer */
+     footer {
+      background-color: var(--primary-color);
+  }
+  
+  .footer-link {
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+      color: var(--accent-color) !important;
+  }
+  </style>
+</head>
+<body>
+
+  
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="Home.html">
+      <img src="images/logo-burungdc.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+      Eternal Bird Nest
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="Product.html">Product</a></li>
+        <li class="nav-item"><a class="nav-link" href="Aboutus.html">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  
+  <!-- Hero Video Section -->
+  <section class="hero-video">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="images/vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-down">
+      <h1>Our Exquisite Collection</h1>
+      <p data-aos="fade-up" data-aos-delay="200">Experience the epitome of luxury and wellness</p>
+    </div>
+  </section>
+  
+  <!-- Parallax Story Section -->
+  <section class="parallax-story">
+    <div class="overlay"></div>
+    <div class="parallax-content">
+      <h2 data-aos="fade-up">An Heirloom of Tradition</h2>
+      <p data-aos="fade-up" data-aos-delay="200">For centuries, bird's nest has been treasured as a symbol of health and prestige. At Eternal Bird Nest, we honor this legacy by bringing you the finest, sustainably-harvested nests. Our products are a testament to craftsmanship, purity, and elegance, delivering an indulgent experience that enriches your body and spirit.</p>
+    </div>
+  </section>
+  
+  <!-- Featured Products Slider -->
+  <section class="featured-products">
+    <div class="container">
+      <h2 data-aos="fade-up">Featured Products</h2>
+      <p data-aos="fade-up" data-aos-delay="100">Discover our curated selection of premium bird's nest products, each crafted to deliver unparalleled quality.</p>
+      <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="images/Big cup.jpg" alt="Big Cup Grade AAA">
+              <div class="product-card-content">
+                <h3>Big Cup Grade AAA</h3>
+                <p>Experience nature’s finest gift with our Cup Grade AAA Bird’s Nest — meticulously hand-selected for its superior quality, purity, and beauty.
+                  Harvested sustainably and processed with the utmost care, each nest boasts a natural ivory hue, thick strands, and a flawless cup shape — the hallmark of premium bird’s nest.
+                  
+                  Naturally rich in essential nutrients such as glycoproteins, amino acids, and minerals, our AAA Cup Grade is perfect for those who seek the purest nourishment for health, vitality, and graceful living.
+                  
+                  Whether for personal indulgence or as a luxurious gift, Eternal Birdnest’s Cup Grade AAA offers a timeless tradition of wellness, carefully preserved in every exquisite nest.
+                  
+                  Key Features:
+                  
+                  100% Pure, Natural Bird’s Nest
+                  Hand-selected Cup Grade AAA Quality
+                  Rich in Nutrients for Health and Beauty
+                  No Bleaching, No Additives, No Preservatives
+                  Sustainably Harvested and Ethically Processed
+                  Suggested Use:
+                  Enjoy in soups, desserts, or beverages to experience authentic nourishment passed down through generations.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="images/imeg2.jpg" alt="Golden Harvest Nest">
+              <div class="product-card-content">
+                <h3>Medium Cup Grade AAA</h3>
+                <p>Experience nature’s finest gift with our Cup Grade AAA Bird’s Nest — meticulously hand-selected for its superior quality, purity, and beauty.
+                  Harvested sustainably and processed with the utmost care, each nest boasts a natural ivory hue, thick strands, and a flawless cup shape — the hallmark of premium bird’s nest.
+                  
+                  Naturally rich in essential nutrients such as glycoproteins, amino acids, and minerals, our AAA Cup Grade is perfect for those who seek the purest nourishment for health, vitality, and graceful living.
+                  
+                  Whether for personal indulgence or as a luxurious gift, Eternal Birdnest’s Cup Grade AAA offers a timeless tradition of wellness, carefully preserved in every exquisite nest.
+                  
+                  Key Features:
+                  
+                  100% Pure, Natural Bird’s Nest
+                  Hand-selected Cup Grade AAA Quality
+                  Rich in Nutrients for Health and Beauty
+                  No Bleaching, No Additives, No Preservatives
+                  Sustainably Harvested and Ethically Processed
+                  Suggested Use:
+                  Enjoy in soups, desserts, or beverages to experience authentic nourishment passed down through generations.</p>              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="images/med-cup.jpg" alt="Medium Cup Grade AAA">
+              <div class="product-card-content">
+                <h3>Small Cup Grade AAA</h3>
+                <p>Enjoy the everyday benefits of nature’s finest superfood with our Smaller Grade Bird’s Nest.
+                  Sustainably harvested and carefully cleaned, each strand offers the same natural purity and essential nutrients as our premium grades — but in a more economical and practical form, ideal for regular consumption.
+                  
+                  Perfect for those who prioritize consistent wellness, Eternal Birdnest’s Smaller Grade provides a daily boost of nourishment, promoting health, vitality, and balance in a natural way.
+                  
+                  Whether incorporated into soups, drinks, or desserts, it’s the perfect choice for making bird’s nest a cherished part of your everyday lifestyle.
+                  
+                  Key Features:
+                  
+                  100% Pure, Natural Bird’s Nest
+                  Suitable for Daily Consumption
+                  High in Glycoproteins, Amino Acids, and Essential Minerals
+                  Economical Choice without Compromising Quality
+                  Sustainably Harvested and Ethically Processed
+                  Suggested Use:
+                  Ideal for daily nourishment — simply prepare in your favorite recipe for a delicious boost to your health and wellness routine.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img src="images/pantat walet.jpg" alt="Special Cup Grade AAAA">
+              <div class="product-card-content">
+                <h3>Special Cup Grade AAAA</h3>
+                <p>Experience the pinnacle of wellness with our Special Cup Grade AAAA Bird’s Nest — meticulously selected from only the finest nests to deliver unmatched purity, thickness, and nutrition. Each cup is crafted with care, offering a rich, smooth texture and naturally sweet aroma that reflects its rare grade.
+
+                  Perfect for those who value health and prestige, this premium nest is ideal for boosting immunity, enhancing skin radiance, and supporting overall vitality. Whether enjoyed daily or gifted to someone special, this is bird’s nest at its most luxurious.
+                  
+                  Why choose our AAAA Grade?
+                  • 100% natural & hand-cleaned – no bleach, no preservatives
+                  • Thick, intact cup shape with high nutritional density
+                  • Sourced ethically from trusted farms
+                  • Ideal for beauty, recovery, and wellness routines
+                  
+                  Taste the difference. Feel the purity. Elevate your lifestyle.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Product Gallery with Filters -->
+  <section class="product-gallery">
+    <div class="container">
+      <h2 data-aos="fade-up">Our Signature Products</h2>
+      <p data-aos="fade-up" data-aos-delay="100">Explore the unique benefits of each Eternal Bird Nest creation.</p>
+      <!-- Filter Buttons -->
+      <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
+        <button class="filter-button active" data-filter="*">All</button>
+        <button class="filter-button" data-filter=".premium">Premium</button>
+        <button class="filter-button" data-filter=".gold">Gold Label</button>
+        <button class="filter-button" data-filter=".royal">Royal</button>
+        <button class="filter-button" data-filter=".herbal">Herbal</button>
+      </div>
+      <!-- Product Grid -->
+      <div class="grid" id="product-grid">
+        <!-- Item 1 -->
+        <div class="grid-item premium" data-aos="fade-up">
+          <img src="images/pantat walet.jpg" alt="Premium Bird Nest">
+          <h4>Premium Bird Nest</h4>
+          <p>Our classic nest selection, rich in natural proteins and minerals.</p>
+          <ul class="benefits-list">
+            <li>Enhances skin complexion</li>
+            <li>Boosts energy levels</li>
+            <li>Supports immune system</li>
+          </ul>
+        </div>
+        <!-- Item 2 -->
+        <div class="grid-item gold" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/Big cup.jpg" alt="Big Cup Grade AAA">
+          <h4>Big Cup Grade AAA</h4>
+          <p>Handpicked golden-grade nests for superior taste and purity.</p>
+          <ul class="benefits-list">
+            <li>Anti-aging properties</li>
+            <li>Strengthens respiratory health</li>
+            <li>Natural stress relief</li>
+          </ul>
+        </div>
+        <!-- Item 3 -->
+        <div class="grid-item royal" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/med-cup.jpg" alt="Medium Cup Grade AAA">
+          <h4>Medium Cup Grade AAA</h4>
+          <p>Double-boiled to extract a potent essence from our finest nests.</p>
+          <ul class="benefits-list">
+            <li>High concentration of nutrients</li>
+            <li>Improves sleep quality</li>
+            <li>Enhances overall vitality</li>
+          </ul>
+        </div>
+        <!-- Item 4 -->
+        <div class="grid-item herbal" data-aos="fade-up" data-aos-delay="300">
+          <img src="images/small-cup.jpg" alt="Herbal Infused Nest">
+          <h4>Small Cup Grade AAA</h4>
+          <p>Blended with traditional herbs to amplify healing effects.</p>
+          <ul class="benefits-list">
+            <li>Soothes digestion</li>
+            <li>Balances hormones</li>
+            <li>Promotes relaxation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="text-center text-white py-4 mt-5">
+    <div class="container">
+        <!-- Section: Links -->
+        <section class="mt-2">
+            <div class="row text-center d-flex justify-content-center pt-5">
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#/" class="text-white title-hover footer-link">Home</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="Product.html" class="text-white title-hover footer-link">Products</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="Aboutus.html" class="text-white title-hover footer-link">About Us</a>
+                    </h6>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <!-- Section: Text -->
+        <section class="mb-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <p>
+                        Nourish your body naturally with the pure goodness of bird's nest. Rich in essential nutrients, it supports your health, strengthens your vitality, and helps you stay focused and energized. Start your journey today towards a healthier, more vibrant you with 永远燕窝.                        </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Social -->
+<section class="text-center mb-5">
+<a href="https://wa.me/message/QJ7GJZ6WUXZOC1" class="text-white me-4" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<a href="https://www.linkedin.com/in/eternal-birdnest-6962b0362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="text-white me-4" target="_blank">
+    <i class="fab fa-linkedin"></i>
+</a>
+<a href="mailto:eternalbirdnest@gmail.com" class="text-white me-4">
+    <i class="fas fa-envelope"></i>
+</a>
+</section>
+
+    </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <!-- Isotope JS -->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Initialize Swiper
+    var swiper = new Swiper('.swiper-container', {
+      loop: true,
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        slideShadows: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    // Initialize Isotope
+    var iso = new Isotope('#product-grid', {
+      itemSelector: '.grid-item',
+      layoutMode: 'fitRows'
+    });
+    // Filter buttons
+    var filterButtons = document.querySelectorAll('.filter-button');
+    filterButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filterValue = this.getAttribute('data-filter');
+        iso.arrange({ filter: filterValue });
+        // set active class
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird nest -- 永远燕窝</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Bree+Serif&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #05324d;
+            --secondary-color: #0a85b3;
+            --accent-color: #fbb702;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: "Roboto Condensed", sans-serif;
+            line-height: 1.6;
+        }
+        
+      /* Navigation */
+.navbar {
+    background-color: var(--primary-color); /* atau --dark-color jika lebih cocok */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white !important;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 700;
+  }
+  
+  /* Underline on hover */
+  .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link.active::after {
+    width: 100%;
+  }
+  
+        /* Hero Section */
+        .hero-slideshow {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            color: white;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn-custom {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .features-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap; /* Biar responsif, kalau layar kecil dia turun */
+        }
+        
+        .feature-item {
+            flex: 1 1 30%;
+            max-width: 30%;
+        }
+        
+        
+        /* About Us Section */
+        .about-us {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-img video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.5s;
+
+        }
+
+        .about-img:hover video {
+            transform: scale(1.05);
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Counter Stats */
+        .counter-stats {
+            background: linear-gradient(rgba(5, 50, 77, 0.9), rgba(5, 50, 77, 0.9)), url('/api/placeholder/1200/300');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .counter-stat {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .counter-stat .counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--accent-color);
+        }
+        
+        .counter-stat p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .program-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program-card:hover .program-img img {
+            transform: scale(1.1);
+        }
+        
+        .program-info {
+            padding: 20px;
+        }
+        
+        .program-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(5, 50, 77, 0.9), rgba(5, 50, 77, 0.9));
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .testimonial-text::before {
+            content: '\201C';
+            font-size: 4rem;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: 60px 0;
+            background: linear-gradient(rgba(10, 133, 179, 0.9), rgba(10, 133, 179, 0.9)), url('images/imeg2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-link {
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .counter-stat .counter {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body ng-controller="NavbarController">
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="Home.html">
+        <img src="images/logo-burungdc.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+        Eternal Bird Nest
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-uppercase" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="Home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Product.html">Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="Aboutus.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+  
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero-slideshow">
+        <div class="hero-slide active" style="background-image: url('images/imeg1.jpg');">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-slide" style="background-image: url('images/imeg2.jpg');">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-slide" style="background-image: url('images/burung_dc.jpg');">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 data-aos="fade-down">Natural Bird Nest</h1>
+            <p data-aos="fade-up">Discover a healthier life by eating bird nest</p>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Premium quality guaranteed with every purchase</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🌿</div>
+                    <h3>100% Natural</h3>
+                    <p>Our bird's nests are 100% natural with no additives or preservatives.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Quality Checked</h3>
+                    <p>Each bird's nest undergoes strict quality control procedures.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌏</div>
+                    <h3>Ethically Sourced</h3>
+                    <p>We ensure sustainable harvesting practices for all our products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Us Section -->
+<section class="about-us">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="about-img">
+                    <video class="img-fluid" autoplay muted loop playsinline>
+                        <source src="images/brg-dc.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-content">
+                    <h2>Our Mission</h2>
+                    <p>At 永远燕窝 (Eternal Bird Nest), our mission is to bring nature’s finest delicacies directly to your table. We are committed to delivering 100% natural, ethically harvested, and premium-quality bird nests to health-conscious individuals around the world.</p>
+                    <p>We believe that true wellness starts with pure ingredients. Through sustainable sourcing and careful processing, we ensure every piece of our bird nest preserves its original nutrients, offering you a luxurious yet wholesome experience.</p>
+                    <a href="Product.html" class="btn btn-custom">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <<!-- Counter Stats -->
+<section class="counter-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up">
+          <div class="counter-stat">
+            <h3 class="counter">130</h3>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+  
+        <div class="col-md-3 col-6 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+          <div class="counter-stat">
+            <h3 class="counter">100</h3>
+            <p>Volume export</p>
+          </div>
+        </div>
+  
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="counter-stat">
+            <h3 class="counter">10</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+    <!-- Programs Section -->
+<section class="programs">
+    <div class="container">
+        <div class="section-title">
+            <h2 data-aos="fade-up">Our Bird Nest</h2>
+            <p data-aos="fade-up">Designed to help you achieve your healthiness goals</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/Big cup.jpg" alt="Big Cup Grade AAA">
+                    </div>
+                    <div class="program-info">
+                        <h3 class="program-title">Big Cup Grade AAA</h3>
+                        <p>Discover the purest essence of wellness with Eternal Birdnest's Big Cup Grade AAA — hand-selected for its exceptional quality, rich nutrients, and flawless natural beauty. A timeless gift of health, crafted by nature.</p>
+                        <a href="Product.html"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/med-cup.jpg" alt="Medium Cup Grade AAA">
+                    </div>
+                    <div class="program-info">
+                        <h3 class="program-title">Medium Cup Grade AAA</h3>
+                        <p>Discover the purest essence of wellness with Eternal Birdnest's Medium Cup Grade AAA — hand-selected for its exceptional quality, rich nutrients, and flawless natural beauty. A timeless gift of health, crafted by nature.</p>
+                        <a href="Product.html"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/small-cup.jpg" alt="Small Cup Grade AAA">
+                    </div>
+                    <div class="program-info">
+                        <h3 class="program-title">Small Cup Grade AAA</h3>
+                        <p>Perfect for daily nourishment, Eternal Birdnest's Smaller Grade offers the same natural goodness in a more economical form. Carefully selected for quality and purity, it's an ideal choice for everyday wellness.</p>
+                        <a href="Product.html"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/pantat walet.jpg" alt="Small Cup Grade AAA">
+                    </div>
+                    <div class="program-info">
+                        <h3 class="program-title">Special Cup Grade AAAA</h3>
+                        <p>Discover the purest essence of wellness with Eternal Birdnest’s Cup Grade AAAA — hand-selected for its exceptional quality, rich nutrients, and flawless natural beauty. A timeless gift of health, crafted by nature.</p>
+                        <a href="Product.html"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Success Stories</h2>
+                <p data-aos="fade-up">Hear from people who trust trust the products of Eternal Bird Nest</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Since 2020, I have trusted 永远燕窝 for their unparalleled quality and dedication to authenticity. Their bird's nests have not only nourished my health but also provided a luxurious experience in every serving. I am proud to be a loyal customer and highly recommend their products to anyone seeking the very best.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="images/dc-gigolo.jpg" alt="MS Xie 谢">
+                            </div>
+                            <div class="author-info">
+                                <h4>MS Xie 谢</h4>
+                                <p>Client since 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            I've been purchasing from 永远燕窝 since 2019, and I couldn't be more satisfied. The bird nests are always of the highest quality — pure, natural, and meticulously prepared. Their consistent excellence and attentive customer service have earned my full trust. 永远燕窝 is my only choice for premium bird nest products.                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="images/mr-chen.jpg" alt="Mr Chen 陈">
+                            </div>
+                            <div class="author-info">
+                                <h4>Mr Chen 陈</h4>
+                                <p>Member since 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            I've been a client of 永远燕窝 since 2017, and my experience has been outstanding. The bird nests are always of the highest quality, fresh, and carefully processed. Their exceptional service and commitment to excellence have made me a loyal customer. 永远燕窝 is my trusted source for premium bird nest products.                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="images/mrlin.jpg" alt="Mr Lin 林">
+                            </div>
+                            <div class="author-info">
+                                <h4>Mr Lin 林</h4>
+                                <p>Member since 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2 data-aos="fade-up">Ready to buy our products</h2>
+            <p data-aos="fade-up">Join hundreds of client who have already started became healthier and of course more vibrant life with Eternal Birth Nest 永远燕窝.</p>
+            <a href="https://wa.me/message/QJ7GJZ6WUXZOC1" class="btn btn-custom" data-aos="zoom-in">Start Your Healthy Life Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-white py-4 mt-5">
+        <div class="container">
+            <!-- Section: Links -->
+            <section class="mt-2">
+                <div class="row text-center d-flex justify-content-center pt-5">
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#/" class="text-white title-hover footer-link">Home</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="Product.html" class="text-white title-hover footer-link">Products</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="Aboutus.html" class="text-white title-hover footer-link">About Us</a>
+                        </h6>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-5" />
+
+            <!-- Section: Text -->
+            <section class="mb-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <p>
+                            Nourish your body naturally with the pure goodness of bird's nest. Rich in essential nutrients, it supports your health, strengthens your vitality, and helps you stay focused and energized. Start your journey today towards a healthier, more vibrant you with 永远燕窝.                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Social -->
+<section class="text-center mb-5">
+    <a href="https://wa.me/message/QJ7GJZ6WUXZOC1" class="text-white me-4" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/eternal-birdnest-6962b0362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="text-white me-4" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="mailto:eternalbirdnest@gmail.com" class="text-white me-4">
+        <i class="fas fa-envelope"></i>
+    </a>
+</section>
+
+        </footer>
+    
+        <!-- JavaScript for Hero Slideshow -->
+        <script>
+            $(document).ready(function() {
+                let currentSlide = 0;
+                const slides = $(".hero-slide");
+                const slideCount = slides.length;
+    
+                function showNextSlide() {
+                    slides.eq(currentSlide).removeClass("active");
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    slides.eq(currentSlide).addClass("active");
+                }
+    
+                setInterval(showNextSlide, 5000); // Ganti slide setiap 5 detik
+            });
+        </script>
+    
+        <!-- AngularJS App -->
+       
+    
+        <!-- Bootstrap Bundle JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <!-- AOS Animation -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                let currentSlide = 0;
+                const slides = $(".hero-slide");
+                const slideCount = slides.length;
+            
+                function showNextSlide() {
+                    slides.eq(currentSlide).removeClass("active");
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    slides.eq(currentSlide).addClass("active");
+                }
+                setInterval(showNextSlide, 5000);
+            
+                // Counter animation
+                $('.counter').each(function () {
+                    let $this = $(this);
+                    let countTo = $this.text();
+                    $this.prop('Counter',0).animate({
+                        Counter: countTo
+                    }, {
+                        duration: 3000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $this.text(Math.ceil(now));
+                        }
+                    });
+                });
+            });
+            </script>
+            
+    </body>
+    </html>
+    
